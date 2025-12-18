@@ -1,0 +1,41 @@
+
+.EducationDisplay-Form {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  column-gap: 32px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.Dates {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #6b7280; /* soft gray */
+  text-align: right;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.School {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  font-family: "Inter", system-ui, sans-serif;
+}
+.Degree {
+  font-size: 15px;
+  color: #374151;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.Headline {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  font-family: "Inter", system-ui, sans-serif;
+}

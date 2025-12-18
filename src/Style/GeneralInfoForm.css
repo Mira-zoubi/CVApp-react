@@ -1,0 +1,52 @@
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.FormTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  font-family: "Inter", system-ui, sans-serif;
+  margin-bottom: 12px;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.Input {
+  height: 42px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #111827;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Input:hover {
+  border-color: #9ca3af;
+}
+
+.Input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
