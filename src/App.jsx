@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import html2pdf from "html2pdf.js";
 
 import { GeneralInfoForm } from "./Components/GeneralInfoForm";
 import { GeneralInfoDisplay } from "./Components/GeneralInfoDisplay";
@@ -7,6 +8,7 @@ import { EducationInfoForm } from "./Components/EducationInfoForm";
 import { EducationInfoDisplay } from "./Components/EducationInfoDisplay";
 import { ExperienceInfoForm } from "./Components/ExperienceInfoForm";
 import { ExperienceInfoDisplay } from "./Components/ExperienceInfoDisplay";
+import { ProfilePhotoUpload } from "./Components/ProfilePhotoUpload";
 
 function App() {
   const [Name, setName] = useState("Mira Zoubi");
@@ -19,17 +21,48 @@ function App() {
   const [EndDate, setEndDate] = useState("2026");
 
   const [CompanyName, setCompanyName] = useState("Egnite");
-  const [PositionTitle, setPositionTitle] = useState("Frontend Developer Intern");
+  const [PositionTitle, setPositionTitle] = useState(
+    "Frontend Developer Intern"
+  );
   const [BeginDate, setBeginDate] = useState("2025");
   const [FinishDate, setFinishDate] = useState("Present");
 
   const [EducationOpen, setEducationOpen] = useState(true);
   const [ExperienceOpen, setExperienceOpen] = useState(true);
 
+  const [photoFile, setPhotoFile] = useState(null);
+
+  function downloadCV() {
+    const element = document.getElementById("cv-preview");
+
+    const options = {
+      margin: 0.5,
+      filename: "Mira_Zoubi_CV.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf().set(options).from(element).save();
+  }
+
   return (
     <div className="cv-app">
       <aside className="cv-editor">
         <h1 className="editor-title">CV Editor</h1>
+
+
+        <button className="download-btn" onClick={downloadCV}>
+          ⬇️ Download CV (PDF)
+        </button>
+
+        <section className="editor-section">
+          <h2 className="section-title">Profile Photo</h2>
+          <ProfilePhotoUpload
+            photoFile={photoFile}
+            setPhotoFile={setPhotoFile}
+          />
+        </section>
 
         <section className="editor-section">
           <h2 className="section-title">Personal Information</h2>
@@ -45,6 +78,7 @@ function App() {
 
         <section className="editor-section">
           <button
+            type="button"
             className="dropdown-header"
             onClick={() => setEducationOpen(!EducationOpen)}
           >
@@ -68,6 +102,7 @@ function App() {
 
         <section className="editor-section">
           <button
+            type="button"
             className="dropdown-header"
             onClick={() => setExperienceOpen(!ExperienceOpen)}
           >
@@ -90,11 +125,12 @@ function App() {
         </section>
       </aside>
 
-      <main className="cv-preview">
+      <main className="cv-preview" id="cv-preview">
         <GeneralInfoDisplay
           Name={Name}
           Email={Email}
           PhoneNumber={PhoneNumber}
+          photoFile={photoFile}
         />
 
         <EducationInfoDisplay

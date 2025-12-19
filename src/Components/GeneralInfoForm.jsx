@@ -8,6 +8,7 @@ export function GeneralInfoForm({Name, Email,PhoneNumber,setName,setEmail,setPho
 <>
            
   <form className= "Form " >
+       
     <h2 className='FormTitle'> 👤 Personal Info</h2>
 
                 <div className='label-input'>

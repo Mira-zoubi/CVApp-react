@@ -1,29 +1,39 @@
+import { useEffect, useState } from "react";
+import "../Style/GeneralInfoDisplay.css";
 
-import '../Style/GeneralInfoDisplay.css';
+export function GeneralInfoDisplay({ Name, Email, PhoneNumber, photoFile }) {
+  const [photoURL, setPhotoURL] = useState(null);
 
-export function GeneralInfoDisplay({Name, Email, PhoneNumber} ){
-    
-    return(
+  useEffect(() => {
+    if (!photoFile) {
+      setPhotoURL(null);
+      return;
+    }
 
-       
+    const url = URL.createObjectURL(photoFile);
+    setPhotoURL(url);
 
-        <div className='DisplayForm'>
-           <div className='Name'>{Name}</div>
+    // cleanup to avoid memory leaks
+    return () => URL.revokeObjectURL(url);
+  }, [photoFile]);
 
-           <div className='EmailPhoneNumber'>
+  return (
+    <div className="DisplayForm">
+      {/* ✅ Profile Photo */}
+      {photoURL && (
+        <img
+          src={photoURL}
+          alt="Profile"
+          className="ProfilePhoto"
+        />
+      )}
 
-            <div>
-            {Email} |
-            </div>
+      <div className="Name">{Name}</div>
 
-           <div>
-             {PhoneNumber}
-           </div>
-           
-           </div>
-        </div>
-   
-
-    )
-   
+      <div className="EmailPhoneNumber">
+        <div>{Email} |</div>
+        <div>{PhoneNumber}</div>
+      </div>
+    </div>
+  );
 }
