@@ -11,6 +11,7 @@ import { ExperienceInfoDisplay } from "./Components/ExperienceInfoDisplay";
 import { ProfilePhotoUpload } from "./Components/ProfilePhotoUpload";
 
 function App() {
+
   const [Name, setName] = useState("Mira Zoubi");
   const [Email, setEmail] = useState("mirazoubi2025@outlook.com");
   const [PhoneNumber, setPhoneNumber] = useState("+962 796 376 907");
@@ -62,6 +63,7 @@ function App() {
             photoFile={photoFile}
             setPhotoFile={setPhotoFile}
           />
+          
         </section>
 
         <section className="editor-section">

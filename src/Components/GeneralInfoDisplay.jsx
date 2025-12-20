@@ -12,14 +12,11 @@ export function GeneralInfoDisplay({ Name, Email, PhoneNumber, photoFile }) {
 
     const url = URL.createObjectURL(photoFile);
     setPhotoURL(url);
-
-    // cleanup to avoid memory leaks
     return () => URL.revokeObjectURL(url);
   }, [photoFile]);
 
   return (
     <div className="DisplayForm">
-      {/* ✅ Profile Photo */}
       {photoURL && (
         <img
           src={photoURL}
